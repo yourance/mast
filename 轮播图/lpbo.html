@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style>
+            .gua-hide {
+                display: none;
+            }
+            .gua-menu-content {
+                height: 100px;
+                border: 1px solid red;
+            }
+            .gua-item {
+                /*display: inline-block;*/
+                /*opacity: 0.6;*/
+                filter: grayscale(100%);
+            }
+            .gua-item.gua-highlight {
+                filter: initial;
+                /*opacity: 1;*/
+            }
+            .gua-item.gua-highlight img {
+                width: 150px;
+                height: 150px;
+            }
+            img {
+                /*transition 这个 css 指定了某个属性发生变化的时候自动使用动画效果和动画时间*/
+                transition: width 1s, height 1s;
+            }
+            .gua-item img {
+                width: 100px;
+                height: 100px;
+            }
+
+            /*3. 轮播图*/
+            .gua-slide {
+                position: relative;
+                width: 590px;
+            }
+            .gua-slide-image {
+                display: none;
+            }
+            /*gua-slide-image*/
+            .gua-active {
+                display: inline-block;
+            }
+            .gua-slide-button {
+                height: 50px;
+                width: 30px;
+                background: black;
+                opacity: 0.3;
+                border: none;
+                color: #fff;
+                cursor: pointer;
+            }
+            .gua-left {
+                left: 0;
+            }
+            .gua-right {
+                right: 0;
+            }
+            /*
+            .gua-vertical-center 是用来垂直居中一个元素的套路 css
+            */
+            .gua-vertical-center {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            .gua-slide-indicators {
+                /*position: relative;
+                bottom: 30px;
+                text-align: center;*/
+                position: absolute;
+                /* left 是相对父元素来移动的 */
+                left: 50%;
+                bottom: 30px;
+                text-align: center;
+                /* translate 是相对元素本身来移动的 */
+                transform: translateX(-50%);
+            }
+            .gua-slide-indi {
+                display: inline-block;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background: red;
+            }
+            .gua-white {
+                background: white;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 轮播图 -->
+        <div class="gua-3">
+            <!-- data-imgs 是图片的总数 -->
+            <!-- data-active 是当前显示的图片的下标 -->
+            <div class="gua-slide" data-imgs="3" data-active="0">
+                <img id="id-guaimage-0" class="gua-slide-image gua-active" src="slideimages/1.jpg" alt="">
+                <img id="id-guaimage-1" class="gua-slide-image" src="slideimages/2.jpg" alt="">
+                <img id="id-guaimage-2" class="gua-slide-image" src="slideimages/3.jpg" alt="">
+                <!--
+                要在 html 里面表示 < > 这些特殊符号的时候, 必须使用 HTML 转义符号
+                &lt; 代表 <
+                -->
+                <button class="gua-slide-button gua-left gua-vertical-center" data-offset="-1">&lt;</button>
+                <button class="gua-slide-button gua-right gua-vertical-center" data-offset="1">&gt;</button>
+                <div class="gua-slide-indicators">
+                    <div id="id-indi-0" class="gua-slide-indi gua-white"
+                        data-index="0"></div>
+                    <div id="id-indi-1" class="gua-slide-indi"
+                        data-index="1"></div>
+                    <div id="id-indi-2" class="gua-slide-indi"
+                        data-index="2"></div>
+                </div>
+                <button>hello</button>
+            </div>
+        </div>
+        <script src="gua.js"></script>
+        <script src="3.js"></script>
+    </body>
+</html>
